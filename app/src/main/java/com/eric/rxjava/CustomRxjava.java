@@ -27,9 +27,9 @@ class CustomRxjava {
     private static final String TAG = "CustomRxjava";
 
     public void testRxjava() {
-        Observable.create(new Observable() {
+        Observable.create(new Observable<String>() {
             @Override
-            public void subscribe(Observer observer) {
+            public void subscribe(Observer<String> observer) {
                 Log.v(TAG, "[subscribe]");
 
                 for (int i = 0; i < 10; i++) {
@@ -37,22 +37,22 @@ class CustomRxjava {
                 }
                 observer.onComplete("观察者执行结束啦");
             }
-        }).subscribe(new Observer() {
+        }).subscribe(new Observer<String>() {
             @Override
-            public void onNext(Object o) {
+            public void onNext(String o) {
                 Log.v(TAG, "[onNext]," + o.toString());
 
 
             }
 
             @Override
-            public void onComplete(Object o) {
+            public void onComplete(String o) {
                 Log.v(TAG, "[onComplete]");
 
             }
 
             @Override
-            public void onError(Object o) {
+            public void onError(String o) {
                 Log.v(TAG, "[onError]," + o.toString());
 
             }
