@@ -39,7 +39,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun testCustomRxJava() {
         val rxjava = CustomRxjava()
-        rxjava.testRxjava()
+//        rxjava.testRxjava()
+        rxjava.testFlatMap()
     }
 
 

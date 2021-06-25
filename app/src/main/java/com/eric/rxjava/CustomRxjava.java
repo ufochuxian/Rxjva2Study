@@ -25,6 +25,7 @@ class CustomRxjava {
 
 
     private static final String TAG = "CustomRxjava";
+    public static final String FLATMAP_TAG = "CustomFlatMap";
 
     public void testRxjava() {
         Observable.create(new Observable<String>() {
@@ -57,5 +58,47 @@ class CustomRxjava {
 
             }
         });
+    }
+
+
+//    2021-06-25 12:04:49.616 26218-26218/com.eric.rxjava V/CustomFlatMap: this:com.eric.rxjava.Observable$1@2aa984d
+//2021-06-25 12:04:49.616 26218-26218/com.eric.rxjava V/CustomFlatMap: Observable this:com.eric.rxjava.CustomRxjava$4@5987f02
+//            2021-06-25 12:04:49.616 26218-26218/com.eric.rxjava V/CustomFlatMap: observerB 的subscribe
+//2021-06-25 12:04:49.616 26218-26218/com.eric.rxjava V/CustomFlatMap: observerB 的onNext
+//2021-06-25 12:04:49.616 26218-26218/com.eric.rxjava V/CustomFlatMap: observerC 的onNext
+
+    public void testFlatMap() {
+        Observable.create(new Observable<String>() {
+            @Override
+            public void subscribe(Observer<String> observer) {
+                Log.v(FLATMAP_TAG, "observerB 的subscribe");
+                observer.onNext("第一个subscribe的observer的onNext");
+//                observer.onComplete("第一个subscribe的observer的onComplete");
+            }
+        })
+                .flatMap()
+                .subscribe(new Observer<String>() {
+
+                    @Override
+                    public void onNext(String o) {
+                        Log.v(FLATMAP_TAG, "observerC 的onNext");
+
+
+                    }
+
+                    @Override
+                    public void onComplete(String o) {
+                        Log.v(FLATMAP_TAG, "observerC 的onComplete");
+
+                    }
+
+                    @Override
+                    public void onError(String o) {
+                        Log.v(FLATMAP_TAG, "observerC 的onError");
+
+
+                    }
+                });
+
     }
 }

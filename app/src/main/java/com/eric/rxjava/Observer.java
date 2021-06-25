@@ -7,6 +7,8 @@ package com.eric.rxjava;
  */
 interface Observer<T> {
 
+    public String name = "default";
+
     void onNext(T t);
 
     void onComplete(T t);
