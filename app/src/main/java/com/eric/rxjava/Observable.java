@@ -46,4 +46,40 @@ abstract class Observable<T> {
         };
     }
 
+    // 自定义map操作符
+    public <R> Observable<R> map(Function<R, T> function) {
+        return new Observable<R>() {
+            @Override
+            public void subscribe(Observer<R> observerC) {
+                Observer<T> observerB = new Observer<T>() {
+                    @Override
+                    public void onNext(T t) {
+                        //重点：经过自定义的函数将输入参数，转换为另外的形式
+                        R apply = function.apply(t);
+                        Log.v(CustomRxjava.FLATMAP_TAG, "observerB 的onNext,转换结果 "+ apply.toString());
+                        observerC.onNext(apply);
+                    }
+
+                    @Override
+                    public void onComplete(T t) {
+                        Log.v(CustomRxjava.FLATMAP_TAG, "observerB的 onComplete");
+                        R apply = function.apply(t);
+                        observerC.onComplete(apply);
+                    }
+
+                    @Override
+                    public void onError(T t) {
+                        Log.v(CustomRxjava.FLATMAP_TAG, "observerB 的onError");
+                        R apply = function.apply(t);
+                        observerC.onError(apply);
+                    }
+                };
+                Log.v(CustomRxjava.FLATMAP_TAG, "this:" + this);
+                Log.v(CustomRxjava.FLATMAP_TAG, "Observable this:" + Observable.this);
+                Observable.this.subscribe(observerB);
+            }
+        };
+    }
+
+
 }

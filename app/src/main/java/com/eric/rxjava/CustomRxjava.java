@@ -1,12 +1,12 @@
 package com.eric.rxjava;
 
+import android.app.Application;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 
-/**
- * @Author: chen
- * @datetime: 2021/6/24
- * @desc:
- */
+import java.io.File;
+
 class CustomRxjava {
 
     //执行结果
@@ -32,7 +32,6 @@ class CustomRxjava {
             @Override
             public void subscribe(Observer<String> observer) {
                 Log.v(TAG, "[subscribe]");
-
                 for (int i = 0; i < 10; i++) {
                     observer.onNext("hello :" + i);
                 }
@@ -101,4 +100,60 @@ class CustomRxjava {
                 });
 
     }
+
+
+    /**
+     * 自定义实现变换操作符 map操作符
+     * <p>
+     * 结合上面实现的flatmap的上下调度 再自定义一些Function<R,T>操作接口方法，那么就能够实现
+     * 在一段流程中，插入一些自定义的函数，达到需求
+     * <p>
+     * 场景：从一个网络url，下载转换为bitmap对象，在进行存储到硬盘上
+     * <p>
+     * 好处：可以随意组合操作符，经过自己的function的实现，那么就完成了需求。代码的可读性很好
+     */
+
+
+    public void testMap() {
+        Observable.create(new Observable<String>() {
+            @Override
+            public void subscribe(Observer<String> observer) {
+                Log.v(FLATMAP_TAG, "observerB 的subscribe");
+                observer.onNext("http://baidu.com/demo.png");
+//                observer.onComplete("第一个subscribe的observer的onComplete");
+            }
+        }).map(new Function<Bitmap, String>() {
+            @Override
+            public Bitmap apply(String s) {
+                return downloadBitmap();
+            }
+        }).map(new Function<File, Bitmap>() {
+            @Override
+            public File apply(Bitmap bitmap) {
+                return new File("本地文件");
+            }
+        }).subscribe(new Observer<File>() {
+            @Override
+            public void onNext(File file) {
+                Log.v(FLATMAP_TAG, "onNext file: " + file.toString());
+            }
+
+            @Override
+            public void onComplete(File file) {
+                Log.v(FLATMAP_TAG, "onComplete bitmap:" + file.toString());
+
+            }
+
+            @Override
+            public void onError(File file) {
+                Log.v(FLATMAP_TAG, "onError bitmap:" + file.toString());
+
+            }
+        });
+    }
+
+    private Bitmap downloadBitmap() {
+        return Bitmap.createBitmap(300, 300, Bitmap.Config.ARGB_8888);
+    }
+
 }
