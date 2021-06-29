@@ -7,13 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.eric.rxjava.databinding.FragmentFirstBinding
-
+import apt.original.TgmRouter
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
+
+    companion object {
+        const val SECOND_ACTIVITY = "secondActivity"
+    }
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,6 +28,7 @@ class FirstFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
 
+        TgmRouter.getInstance().register(SECOND_ACTIVITY,SecondActivity::class.java);
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -34,6 +39,10 @@ class FirstFragment : Fragment() {
 
         binding.buttonFirst.setOnClickListener {
             findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+        }
+
+        binding.jumpBtn.setOnClickListener {
+            TgmRouter.getInstance().startActivity(SECOND_ACTIVITY)
         }
     }
 
