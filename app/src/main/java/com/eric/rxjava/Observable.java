@@ -1,6 +1,9 @@
 package com.eric.rxjava;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
+
 
 abstract class Observable<T> {
 
@@ -56,7 +59,7 @@ abstract class Observable<T> {
                     public void onNext(T t) {
                         //重点：经过自定义的函数将输入参数，转换为另外的形式
                         R apply = function.apply(t);
-                        Log.v(CustomRxjava.FLATMAP_TAG, "observerB 的onNext,转换结果 "+ apply.toString());
+                        Log.v(CustomRxjava.FLATMAP_TAG, "observerB 的onNext,转换结果 " + apply.toString());
                         observerC.onNext(apply);
                     }
 
@@ -81,5 +84,77 @@ abstract class Observable<T> {
         };
     }
 
+    //自定义subscribeOn操作符
+    public Observable<T> subscribeOn() {
+        return new Observable<T>() {
+            @Override
+            public void subscribe(Observer<T> observerC) {
+
+                //切换到子线程
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Observer<T> observerB = new Observer<T>() {
+                            @Override
+                            public void onNext(T t) {
+                                Log.v(CustomRxjava.FLATMAP_TAG, "subscribeOn操作符 onNext,thread:" + Thread.currentThread().getName());
+                                observerC.onNext(t);
+                            }
+
+                            @Override
+                            public void onComplete(T t) {
+                                observerC.onComplete(t);
+
+                            }
+
+                            @Override
+                            public void onError(T t) {
+                                observerC.onError(t);
+
+                            }
+                        };
+                        Observable.this.subscribe(observerB);
+                    }
+                }).start();
+            }
+        };
+    }
+
+    Handler mHandler = new Handler(Looper.getMainLooper());
+
+    public Observable<T> observerOn() {
+        return new Observable<T>() {
+            @Override
+            public void subscribe(Observer<T> observerC) {
+                Observer<T> observerB = new Observer<T>() {
+                    @Override
+                    public void onNext(T t) {
+                        Log.v(CustomRxjava.FLATMAP_TAG, "[observerB] onNext方法,thread:" + Thread.currentThread().getName());
+                        mHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                //这里要填写在onNext(事件响应的时候)，才可以切换回主线程
+                                observerC.onNext(t);
+                            }
+                        });
+
+                    }
+
+                    @Override
+                    public void onComplete(T t) {
+                        observerC.onComplete(t);
+
+                    }
+
+                    @Override
+                    public void onError(T t) {
+                        observerC.onError(t);
+
+                    }
+                };
+                Observable.this.subscribe(observerB);
+            }
+        };
+    }
 
 }

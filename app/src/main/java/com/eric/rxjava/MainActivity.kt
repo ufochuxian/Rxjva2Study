@@ -42,6 +42,7 @@ class MainActivity : AppCompatActivity() {
 //        rxjava.testRxjava()
 //        rxjava.testFlatMap()
         rxjava.testMap()
+//        rxjava.testSubscribeOn()x
     }
 
 
