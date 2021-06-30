@@ -1,5 +1,17 @@
 package com.eric.router_compiler;
 
+/**
+ *
+ *
+ *
+ *   关于apt 技术的两篇好文章
+ *
+ *   https://cloud.tencent.com/developer/article/1717461（聊聊AbstractProcessor和Java编译流程）
+ *
+ *   （https://blog.csdn.net/xx326664162/article/details/68490059 你必须知道的APT、annotationProcessor、android-apt、Provided、自定义注解）
+ *
+ *   https://juejin.cn/post/6844904136454963207 （apt不在神秘）
+ */
 
 import com.eric.router_annotation.Router;
 import com.google.auto.service.AutoService;
