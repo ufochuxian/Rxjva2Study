@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SecondActivity">
+        <activity android:name="com.eric.routers.apt.SecondActivity">
 
         </activity>
     </application>

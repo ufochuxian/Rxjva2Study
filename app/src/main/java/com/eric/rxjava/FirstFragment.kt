@@ -7,7 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.eric.rxjava.databinding.FragmentFirstBinding
-import apt.original.TgmRouter
+import com.eric.routers.TgmRouter
+
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
@@ -28,7 +29,6 @@ class FirstFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
 
-        TgmRouter.getInstance().register(SECOND_ACTIVITY,SecondActivity::class.java);
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
 
@@ -42,7 +42,7 @@ class FirstFragment : Fragment() {
         }
 
         binding.jumpBtn.setOnClickListener {
-            TgmRouter.getInstance().startActivity(SECOND_ACTIVITY)
+            TgmRouter.getInstance().startActivity("/food/main")
         }
     }
 

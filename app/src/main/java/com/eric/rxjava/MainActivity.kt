@@ -9,7 +9,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
-import apt.original.TgmRouter
+import com.eric.routers.TgmRouter
 import com.eric.rxjava.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

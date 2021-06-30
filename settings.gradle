@@ -1,2 +1,5 @@
 rootProject.name = "Rxjava"
 include ':app'
+include ':router-annotation'
+include ':router-compiler'
+include ':router'

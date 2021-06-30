@@ -21,7 +21,7 @@ abstract class Observable<T> {
     public Observable<T> flatMap() {
         return new Observable<T>() {
             @Override
-            public void subscribe(Observer<T> observerC) {
+            public void subscribe(final Observer<T> observerC) {
                 Observer<T> observerB = new Observer<T>() {
 
                     @Override
@@ -50,10 +50,10 @@ abstract class Observable<T> {
     }
 
     // 自定义map操作符
-    public <R> Observable<R> map(Function<R, T> function) {
+    public <R> Observable<R> map(final Function<R, T> function) {
         return new Observable<R>() {
             @Override
-            public void subscribe(Observer<R> observerC) {
+            public void subscribe(final Observer<R> observerC) {
                 Observer<T> observerB = new Observer<T>() {
                     @Override
                     public void onNext(T t) {
@@ -88,7 +88,7 @@ abstract class Observable<T> {
     public Observable<T> subscribeOn() {
         return new Observable<T>() {
             @Override
-            public void subscribe(Observer<T> observerC) {
+            public void subscribe(final Observer<T> observerC) {
 
                 //切换到子线程
                 new Thread(new Runnable() {
@@ -125,10 +125,10 @@ abstract class Observable<T> {
     public Observable<T> observerOn() {
         return new Observable<T>() {
             @Override
-            public void subscribe(Observer<T> observerC) {
+            public void subscribe(final Observer<T> observerC) {
                 Observer<T> observerB = new Observer<T>() {
                     @Override
-                    public void onNext(T t) {
+                    public void onNext(final T t) {
                         Log.v(CustomRxjava.FLATMAP_TAG, "[observerB] onNext方法,thread:" + Thread.currentThread().getName());
                         mHandler.post(new Runnable() {
                             @Override

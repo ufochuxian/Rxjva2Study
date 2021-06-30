@@ -1,11 +1,16 @@
-package apt.original;
+package com.eric.routers;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.util.Log;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @Author: chen
@@ -20,10 +25,26 @@ public class TgmRouter {
 
     public void init(Context context) {
         this.mCtx = context;
+        try {
+            Set<String> classNames = ClassUtils.getFileNameByPackageName(context, "com.eric.routers.apt");
+
+            for (String className : classNames) {
+                Class<?> clazz = Class.forName(className);
+                if (IRouteLoad.class.isAssignableFrom(clazz)) {
+                    //当前clazz文件是IRouteLoad的实现类
+                    Log.v(TAG, "[init] classNames size:" + classNames.size());
+                    IRouteLoad isRoutePath = (IRouteLoad) clazz.getConstructor().newInstance();
+                    isRoutePath.onLoad(routes);
+                }
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "初始化失败");
+            e.printStackTrace();
+        }
     }
 
     //path 集合
-    public Map<String, Class> routes = new HashMap<>();
+    public Map<String, Class<? extends Activity>> routes = new HashMap<>();
 
     private static TgmRouter mInstance = null;
 
