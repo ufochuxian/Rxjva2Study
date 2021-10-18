@@ -11,6 +11,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.eric.routers.TgmRouter
 import com.eric.rxjava.databinding.ActivityMainBinding
+import com.eric.operatprs.JustOperator;
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,7 +37,16 @@ class MainActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
 
-        testCustomRxJava()
+//        testCustomRxJava()
+
+        var flowable = JustOperator()
+
+//        flowable.flowable()
+//
+//        flowable.just()
+
+        flowable.zipWith()
+        flowable.interval()
 
     }
 
@@ -44,8 +54,8 @@ class MainActivity : AppCompatActivity() {
         val rxjava = CustomRxjava()
 //        rxjava.testRxjava()
 //        rxjava.testFlatMap()
-        rxjava.testMap()
-//        rxjava.testSubscribeOn()x
+//        rxjava.testMap()
+//        rxjava.testSubscribeOn()
     }
 
 
