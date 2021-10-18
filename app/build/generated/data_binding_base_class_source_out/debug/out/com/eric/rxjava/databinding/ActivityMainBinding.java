@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.viewbinding.ViewBinding;
+import androidx.viewbinding.ViewBindings;
 import com.eric.rxjava.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.lang.NullPointerException;
@@ -60,13 +61,13 @@ public final class ActivityMainBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.fab;
-      FloatingActionButton fab = rootView.findViewById(id);
+      FloatingActionButton fab = ViewBindings.findChildViewById(rootView, id);
       if (fab == null) {
         break missingId;
       }
 
       id = R.id.toolbar;
-      Toolbar toolbar = rootView.findViewById(id);
+      Toolbar toolbar = ViewBindings.findChildViewById(rootView, id);
       if (toolbar == null) {
         break missingId;
       }

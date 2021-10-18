@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
+import androidx.viewbinding.ViewBindings;
 import com.eric.rxjava.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -54,7 +55,7 @@ public final class ActivitySecondBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.btn;
-      Button btn = rootView.findViewById(id);
+      Button btn = ViewBindings.findChildViewById(rootView, id);
       if (btn == null) {
         break missingId;
       }

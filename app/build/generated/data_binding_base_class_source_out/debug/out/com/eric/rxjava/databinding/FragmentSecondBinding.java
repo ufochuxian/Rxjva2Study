@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
+import androidx.viewbinding.ViewBindings;
 import com.eric.rxjava.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -60,13 +61,13 @@ public final class FragmentSecondBinding implements ViewBinding {
     int id;
     missingId: {
       id = R.id.button_second;
-      Button buttonSecond = rootView.findViewById(id);
+      Button buttonSecond = ViewBindings.findChildViewById(rootView, id);
       if (buttonSecond == null) {
         break missingId;
       }
 
       id = R.id.textview_second;
-      TextView textviewSecond = rootView.findViewById(id);
+      TextView textviewSecond = ViewBindings.findChildViewById(rootView, id);
       if (textviewSecond == null) {
         break missingId;
       }

@@ -1,12 +1,24 @@
 package com.eric.operatprs;
+
+import java.io.Serializable;
+
 /**
+ * @Author: chen
+ * @datetime: 2021/10/18
+ * @desc:
+ */
+class Person implements Serializable {
 
-* @Author: chen
+    public String uid = "";
+    public String userName = "";
+    public String telNumber = "";
 
-* @datetime: 2021/10/18
-
-* @desc: 
-
-*/
-   class Persion   {
+    @Override
+    public String toString() {
+        return "Person{" +
+                "uid='" + uid + '\'' +
+                ", userName='" + userName + '\'' +
+                ", telNumber='" + telNumber + '\'' +
+                '}';
+    }
 }

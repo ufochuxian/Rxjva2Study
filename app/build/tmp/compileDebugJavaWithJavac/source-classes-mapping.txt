@@ -1,18 +1,20 @@
 com/eric/rxjava/databinding/ContentMainBinding.java
  com.eric.rxjava.databinding.ContentMainBinding
+com/eric/operatprs/Person.java
+ com.eric.operatprs.Person
 com/eric/generic/GenericClass.java
  com.eric.generic.GenericClass
+com/eric/rxjava/databinding/ActivitySecondBinding.java
+ com.eric.rxjava.databinding.ActivitySecondBinding
 com/eric/routers/apt/SecondActivity.java
  com.eric.routers.apt.SecondActivity
  com.eric.routers.apt.SecondActivity$1
-com/eric/rxjava/databinding/ActivitySecondBinding.java
- com.eric.rxjava.databinding.ActivitySecondBinding
 com/eric/rxjava/databinding/ActivityMainBinding.java
  com.eric.rxjava.databinding.ActivityMainBinding
-com/eric/rxjava/Observer.java
- com.eric.rxjava.Observer
 com/eric/rxjava/BuildConfig.java
  com.eric.rxjava.BuildConfig
+com/eric/rxjava/Observer.java
+ com.eric.rxjava.Observer
 com/eric/rxjava/databinding/FragmentFirstBinding.java
  com.eric.rxjava.databinding.FragmentFirstBinding
 com/eric/rxjava/databinding/FragmentSecondBinding.java
@@ -31,6 +33,8 @@ com/eric/rxjava/CustomRxjava.java
  com.eric.rxjava.CustomRxjava$9
 com/eric/operatprs/JustOperator.java
  com.eric.operatprs.JustOperator
+ com.eric.operatprs.JustOperator$1
+ com.eric.operatprs.JustOperator$2
 com/eric/rxjava/Function.java
  com.eric.rxjava.Function
 com/eric/rxjava/Observable.java
