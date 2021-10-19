@@ -17,6 +17,8 @@ com/eric/rxjava/Observer.java
  com.eric.rxjava.Observer
 com/eric/rxjava/databinding/FragmentFirstBinding.java
  com.eric.rxjava.databinding.FragmentFirstBinding
+com/eric/operatprs/bean/Student.java
+ com.eric.operatprs.bean.Student
 com/eric/rxjava/databinding/FragmentSecondBinding.java
  com.eric.rxjava.databinding.FragmentSecondBinding
 com/eric/rxjava/CustomRxjava.java
@@ -35,6 +37,8 @@ com/eric/operatprs/JustOperator.java
  com.eric.operatprs.JustOperator
  com.eric.operatprs.JustOperator$1
  com.eric.operatprs.JustOperator$2
+ com.eric.operatprs.JustOperator$3
+ com.eric.operatprs.JustOperator$4
 com/eric/rxjava/Function.java
  com.eric.rxjava.Function
 com/eric/rxjava/Observable.java

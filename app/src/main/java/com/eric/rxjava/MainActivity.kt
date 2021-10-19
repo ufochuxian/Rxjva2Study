@@ -48,7 +48,8 @@ class MainActivity : AppCompatActivity() {
 //        flowable.zipWith()
 //        flowable.interval()
 //        flowable.fromIterable()
-        flowable.testMap()
+//        flowable.testMap()
+        flowable.testFlatMap()
 
     }
 

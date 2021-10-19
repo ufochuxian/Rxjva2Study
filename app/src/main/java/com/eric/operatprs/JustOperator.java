@@ -2,6 +2,7 @@ package com.eric.operatprs;
 
 import android.util.Log;
 
+import com.eric.operatprs.bean.Student;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
@@ -14,9 +15,9 @@ import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.ObservableEmitter;
 import io.reactivex.rxjava3.core.ObservableOnSubscribe;
+import io.reactivex.rxjava3.core.ObservableSource;
 import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.functions.Action;
 import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.functions.Function;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -154,6 +155,84 @@ public class JustOperator {
         });
 
     }
+
+    /**
+     * flatmap和map的区别是，
+     * map操作符返回的是一个"结果集"
+     * flatmap操作符返回的是包含结果集的Observable(返回结果不同)
+     * <p>
+     * 转换对象的能力不同：
+     * map只能一对一转换
+     * flatmap能够进行一对一转换，也能一对多，多对多进行转换，一个对象可以转换为另一个对象。还可以转换成
+     * 对象数组，再使用from,just系列操作符进行再次转换，剔除嵌套结构
+     * <p>
+     * <p>
+     * map适用于一对一转换，当然也可以配合flatmap进行使用
+     * <p>
+     * flatmap适用于一对多，多对多的场景
+     */
+
+    public void testFlatMap() {
+        Student student1 = new Student();
+        List courselist = new ArrayList();
+        courselist.add("语文");
+        courselist.add("英语");
+        courselist.add("地理");
+        courselist.add("文学");
+        student1.courses = courselist;
+
+        Student student2 = new Student();
+        List courselis2 = new ArrayList();
+        courselist.add("化学");
+        courselist.add("数学");
+        courselist.add("生物");
+        courselist.add("物理");
+        student1.courses = courselist;
+
+        //因为每个学生有多门课程，那么这是一个二层的数据结构
+        List<Student> students = new ArrayList<>();
+        students.add(student1);
+        students.add(student2);
+
+        Observable.fromIterable(students)
+                .flatMap(new Function<Student, ObservableSource<String>>() {
+                    @Override
+                    public ObservableSource<String> apply(Student student) throws Throwable {
+                        //这里面返回的再次使用fromIterable操作符，就解开了这种两层嵌套的结构
+                        return Observable.fromIterable(student.courses);
+                    }
+                })
+                .subscribe(new Observer<String>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull String s) {
+                        Log.i(TAG, "课程:" + s);
+
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        Log.e(TAG, e.toString());
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    //一个打印出所有学生的所有课程的场景 （每个学生下面有多门课程这种场景）
+    //https://www.jianshu.com/p/c820afafd94b
+    //使用map的话，需要先得到每个学生的所有课程的List，然后再遍历list，获取到每个学生的课程
+
+    //使用flatmap的话，那么可以得到学生的所有课程的List组成的Observable对象，然后再继续订阅，进行转换，
+    //相当于多层map的转换嵌套。
 
 
 }
