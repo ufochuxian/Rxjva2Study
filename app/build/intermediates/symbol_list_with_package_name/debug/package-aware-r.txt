@@ -1999,6 +1999,7 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id num_txt
 id off
 id on
 id outline
@@ -2215,6 +2216,7 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_jetpack
 layout activity_main
 layout activity_second
 layout content_main

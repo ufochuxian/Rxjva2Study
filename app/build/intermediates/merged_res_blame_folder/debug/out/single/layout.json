@@ -16,6 +16,10 @@
         "source": "/Users/chen/Documents/GitHub/Rxjava2Study/app/src/main/res/layout/content_main.xml"
     },
     {
+        "merged": "/Users/chen/Documents/GitHub/Rxjava2Study/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_jetpack.xml",
+        "source": "/Users/chen/Documents/GitHub/Rxjava2Study/app/src/main/res/layout/activity_jetpack.xml"
+    },
+    {
         "merged": "/Users/chen/Documents/GitHub/Rxjava2Study/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_first.xml",
         "source": "/Users/chen/Documents/GitHub/Rxjava2Study/app/src/main/res/layout/fragment_first.xml"
     }

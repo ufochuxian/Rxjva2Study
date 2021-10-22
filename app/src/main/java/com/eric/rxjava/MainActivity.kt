@@ -1,17 +1,21 @@
 package com.eric.rxjava
 
+import android.content.Intent
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
+import com.eric.jetpack.JetpackActivity
+import com.eric.operatprs.JustOperator
 import com.eric.routers.TgmRouter
 import com.eric.rxjava.databinding.ActivityMainBinding
-import com.eric.operatprs.JustOperator;
+import com.google.android.material.snackbar.Snackbar
+import io.reactivex.rxjava3.core.Observable
+import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
@@ -49,7 +53,24 @@ class MainActivity : AppCompatActivity() {
 //        flowable.interval()
 //        flowable.fromIterable()
 //        flowable.testMap()
-        flowable.testFlatMap()
+//        flowable.testFlatMap()
+
+//        flowable.testMerge()
+
+//        flowable.testZip()
+
+//        flowable.testReduce()
+
+//        flowable.testAsync()
+
+
+        Observable.create<String> {
+            it.onNext("开始")
+        }.delay(1000, TimeUnit.MILLISECONDS)
+            .subscribe {
+                var intent = Intent(this,JetpackActivity::class.java)
+                this.startActivity(intent)
+            }
 
     }
 

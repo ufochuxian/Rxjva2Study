@@ -11,7 +11,7 @@
 9-->/Users/chen/Documents/GitHub/Rxjava2Study/app/src/main/AndroidManifest.xml
 10
 11    <application
-11-->/Users/chen/Documents/GitHub/Rxjava2Study/app/src/main/AndroidManifest.xml:5:5-26:19
+11-->/Users/chen/Documents/GitHub/Rxjava2Study/app/src/main/AndroidManifest.xml:5:5-28:19
 12        android:allowBackup="true"
 12-->/Users/chen/Documents/GitHub/Rxjava2Study/app/src/main/AndroidManifest.xml:6:9-35
 13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -47,10 +47,13 @@
 28-->/Users/chen/Documents/GitHub/Rxjava2Study/app/src/main/AndroidManifest.xml:19:27-74
 29            </intent-filter>
 30        </activity>
-31        <activity android:name="com.eric.routers.apt.SecondActivity" >
-31-->/Users/chen/Documents/GitHub/Rxjava2Study/app/src/main/AndroidManifest.xml:23:9-25:20
+31        <activity android:name="com.eric.routers.apt.SecondActivity" />
+31-->/Users/chen/Documents/GitHub/Rxjava2Study/app/src/main/AndroidManifest.xml:23:9-71
 31-->/Users/chen/Documents/GitHub/Rxjava2Study/app/src/main/AndroidManifest.xml:23:19-69
-32        </activity>
-33    </application>
-34
-35</manifest>
+32        <activity android:name="com.eric.jetpack.JetpackActivity" >
+32-->/Users/chen/Documents/GitHub/Rxjava2Study/app/src/main/AndroidManifest.xml:25:9-27:20
+32-->/Users/chen/Documents/GitHub/Rxjava2Study/app/src/main/AndroidManifest.xml:25:19-66
+33        </activity>
+34    </application>
+35
+36</manifest>

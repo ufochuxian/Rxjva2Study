@@ -36,9 +36,18 @@ com/eric/rxjava/CustomRxjava.java
 com/eric/operatprs/JustOperator.java
  com.eric.operatprs.JustOperator
  com.eric.operatprs.JustOperator$1
+ com.eric.operatprs.JustOperator$10
+ com.eric.operatprs.JustOperator$11
  com.eric.operatprs.JustOperator$2
  com.eric.operatprs.JustOperator$3
  com.eric.operatprs.JustOperator$4
+ com.eric.operatprs.JustOperator$5
+ com.eric.operatprs.JustOperator$6
+ com.eric.operatprs.JustOperator$7
+ com.eric.operatprs.JustOperator$8
+ com.eric.operatprs.JustOperator$9
+com/eric/rxjava/databinding/ActivityJetpackBinding.java
+ com.eric.rxjava.databinding.ActivityJetpackBinding
 com/eric/rxjava/Function.java
  com.eric.rxjava.Function
 com/eric/rxjava/Observable.java
@@ -53,3 +62,7 @@ com/eric/rxjava/Observable.java
  com.eric.rxjava.Observable$4
  com.eric.rxjava.Observable$4$1
  com.eric.rxjava.Observable$4$1$1
+com/eric/jetpack/JetpackActivity.java
+ com.eric.jetpack.JetpackActivity
+ com.eric.jetpack.JetpackActivity$1
+ com.eric.jetpack.JetpackActivity$2

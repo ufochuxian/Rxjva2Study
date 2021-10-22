@@ -5,6 +5,7 @@ import android.util.Log;
 import com.eric.operatprs.bean.Student;
 import com.google.gson.Gson;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -18,6 +19,7 @@ import io.reactivex.rxjava3.core.ObservableOnSubscribe;
 import io.reactivex.rxjava3.core.ObservableSource;
 import io.reactivex.rxjava3.core.Observer;
 import io.reactivex.rxjava3.disposables.Disposable;
+import io.reactivex.rxjava3.functions.BiFunction;
 import io.reactivex.rxjava3.functions.Consumer;
 import io.reactivex.rxjava3.functions.Function;
 import io.reactivex.rxjava3.schedulers.Schedulers;
@@ -233,6 +235,102 @@ public class JustOperator {
 
     //使用flatmap的话，那么可以得到学生的所有课程的List组成的Observable对象，然后再继续订阅，进行转换，
     //相当于多层map的转换嵌套。
+
+
+    /**
+     * 合并操作符
+     */
+    public void testMerge() {
+        Observable<Integer> observable1 = Observable.just(1, 2, 3);
+        Observable<String> observable2 = Observable.just("a", "b", "c");
+
+        Observable.merge(observable1, observable2).subscribe((Consumer<Serializable>) serializable -> {
+
+            Log.i(TAG, "merge :" + serializable);
+
+        });
+    }
+
+    public void testZip() {
+        Observable<String> observable1 = Observable.just("1", "2", "3");
+        Observable<String> observable2 = Observable.just("a", "b", "c");
+
+        Observable.zip(observable1, observable2, new BiFunction<String, String, Object>() {
+            @Override
+            public Object apply(String s, String s2) throws Throwable {
+                //合并规则
+                return s + s2;
+            }
+
+            ;
+        }).subscribe(o -> {
+            Log.v(TAG, "zip:" + o);
+        });
+    }
+
+    //reduce操作符 将每次的结果集 按照指定的规则 再次进行累计操作
+    public void testReduce() {
+        Observable.just(1, 2, 3, 4, 5, 6, 7, 8).reduce(new BiFunction<Integer, Integer, Integer>() {
+            @Override
+            public Integer apply(Integer integer, Integer integer2) throws Throwable {
+                //自定义规则
+                return integer + integer2;
+            }
+        }).subscribe(new Consumer<Integer>() {
+            @Override
+            public void accept(Integer integer) throws Throwable {
+                Log.v(TAG, "reduce:" + integer);
+            }
+        });
+    }
+
+    /**
+     * 异步操作
+     */
+
+    public void testAsync() {
+
+        Observable<String> ov1 = Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<String> emitter) throws Throwable {
+                Thread.sleep(1000 * 3);
+                emitter.onNext("create1");
+                Log.v(TAG, Thread.currentThread().getName() + " 我等待了3s之后，才打印的");
+            }
+        }).subscribeOn(Schedulers.newThread());
+
+        Observable<String> ov2 = Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(@NonNull ObservableEmitter<String> emitter) throws Throwable {
+                Thread.sleep(1000);
+                emitter.onNext("create2");
+                Log.v(TAG, Thread.currentThread().getName() + " 我等待了1s之后，才打印的");
+            }
+        })
+                .subscribeOn(Schedulers.newThread());
+
+        //执行时间长的那个执行完了就完了
+        Observable.concat(ov1, ov2)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Throwable {
+                        Log.v(TAG, "都执行结束了");
+                    }
+                });
+
+        // 顺序执行两个被观察者
+        Observable.merge(ov1, ov2)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<String>() {
+                    @Override
+                    public void accept(String s) throws Throwable {
+                        Log.v(TAG, "都执行结束了");
+                    }
+                });
+
+
+    }
 
 
 }

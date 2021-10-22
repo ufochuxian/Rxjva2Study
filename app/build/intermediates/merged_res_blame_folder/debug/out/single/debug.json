@@ -40,6 +40,10 @@
         "source": "/Users/chen/Documents/GitHub/Rxjava2Study/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
+        "merged": "/Users/chen/Documents/GitHub/Rxjava2Study/app/build/intermediates/merged_res/debug/layout_activity_jetpack.xml.flat",
+        "source": "/Users/chen/Documents/GitHub/Rxjava2Study/app/src/main/res/layout/activity_jetpack.xml"
+    },
+    {
         "merged": "/Users/chen/Documents/GitHub/Rxjava2Study/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher.png.flat",
         "source": "/Users/chen/Documents/GitHub/Rxjava2Study/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
     },
