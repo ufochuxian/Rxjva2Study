@@ -66,3 +66,4 @@ com/eric/jetpack/JetpackActivity.java
  com.eric.jetpack.JetpackActivity
  com.eric.jetpack.JetpackActivity$1
  com.eric.jetpack.JetpackActivity$2
+ com.eric.jetpack.JetpackActivity$3
