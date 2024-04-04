@@ -27,13 +27,17 @@ public final class FragmentFirstBinding implements ViewBinding {
   public final Button jumpBtn;
 
   @NonNull
+  public final Button lifecycleBtn;
+
+  @NonNull
   public final TextView textviewFirst;
 
   private FragmentFirstBinding(@NonNull ConstraintLayout rootView, @NonNull Button buttonFirst,
-      @NonNull Button jumpBtn, @NonNull TextView textviewFirst) {
+      @NonNull Button jumpBtn, @NonNull Button lifecycleBtn, @NonNull TextView textviewFirst) {
     this.rootView = rootView;
     this.buttonFirst = buttonFirst;
     this.jumpBtn = jumpBtn;
+    this.lifecycleBtn = lifecycleBtn;
     this.textviewFirst = textviewFirst;
   }
 
@@ -76,6 +80,12 @@ public final class FragmentFirstBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.lifecycleBtn;
+      Button lifecycleBtn = ViewBindings.findChildViewById(rootView, id);
+      if (lifecycleBtn == null) {
+        break missingId;
+      }
+
       id = R.id.textview_first;
       TextView textviewFirst = ViewBindings.findChildViewById(rootView, id);
       if (textviewFirst == null) {
@@ -83,7 +93,7 @@ public final class FragmentFirstBinding implements ViewBinding {
       }
 
       return new FragmentFirstBinding((ConstraintLayout) rootView, buttonFirst, jumpBtn,
-          textviewFirst);
+          lifecycleBtn, textviewFirst);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

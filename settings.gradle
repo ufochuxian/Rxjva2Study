@@ -1,4 +1,4 @@
-rootProject.name = "Rxjava"
+rootProject.name = "AndroidStudy"
 include ':app'
 include ':router-annotation'
 include ':router-compiler'

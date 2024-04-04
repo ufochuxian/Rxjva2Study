@@ -2,9 +2,12 @@ package com.eric.rxjava
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.toBitmap
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -15,7 +18,9 @@ import com.eric.routers.TgmRouter
 import com.eric.rxjava.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 import io.reactivex.rxjava3.core.Observable
+import org.github.jamm.MemoryMeter
 import java.util.concurrent.TimeUnit
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -64,13 +69,36 @@ class MainActivity : AppCompatActivity() {
 //        flowable.testAsync()
 
 
-        Observable.create<String> {
-            it.onNext("开始")
-        }.delay(1000, TimeUnit.MILLISECONDS)
-            .subscribe {
-                var intent = Intent(this,JetpackActivity::class.java)
-                this.startActivity(intent)
-            }
+//        Observable.create<String> {
+//            it.onNext("开始")
+//        }.delay(1000, TimeUnit.MILLISECONDS)
+//            .subscribe {
+//                var intent = Intent(this,JetpackActivity::class.java)
+//                this.startActivity(intent)
+//            }
+
+        val obtain = Parcel.obtain()
+
+        obtain.writeInt(12)
+
+        obtain.writeInt(14)
+
+        obtain.setDataPosition(0)
+
+        println(obtain.readInt())
+        println(obtain.readInt())
+        println(obtain.readInt())
+
+
+
+
+//        val launchBitmap = binding.icLauncher.drawable.toBitmap()
+//
+//
+//        val meter = MemoryMeter()
+//        // 创建对象并估算大小
+//        val size = meter.measure(launchBitmap)
+//        println("Size of the object: $size bytes")
 
     }
 

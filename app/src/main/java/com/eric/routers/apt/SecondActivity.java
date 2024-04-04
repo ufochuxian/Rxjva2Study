@@ -28,5 +28,9 @@ public class SecondActivity extends AppCompatActivity {
 
             }
         });
+
+        View view = getWindow().getDecorView();
+
+
     }
 }

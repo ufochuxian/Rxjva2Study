@@ -36,4 +36,16 @@
         app:layout_constraintStart_toStartOf="@id/button_first"
         app:layout_constraintTop_toBottomOf="@id/button_first">
     </Button>
+
+    <Button
+        android:id="@+id/lifecycleBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="自定义lifecycycle activity"
+        app:layout_constraintEnd_toEndOf="@id/jumpBtn"
+        app:layout_constraintStart_toStartOf="@id/jumpBtn"
+        app:layout_constraintTop_toBottomOf="@id/jumpBtn">
+
+    </Button>
 </androidx.constraintlayout.widget.ConstraintLayout>

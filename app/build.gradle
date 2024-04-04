@@ -59,8 +59,21 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     api project(":router")
 
+    implementation 'com.github.jbellis:jamm:0.3.0'
+
     //为了在编译期间调用AbstractProcessor的init和process方法，自动生成java代码，这里需要使用annotationProcessor
     annotationProcessor project(':router-compiler')
 
 
+}
+
+class CustomPlugin implements Plugin<Project> {
+    @Override
+    void apply(Project target) {
+        target.task("showCustomPlugin") {
+            doLast {
+                println("this is custom plugin")
+            }
+        }
+    }
 }

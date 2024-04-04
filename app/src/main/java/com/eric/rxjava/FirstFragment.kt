@@ -1,11 +1,13 @@
 package com.eric.rxjava
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.eric.lifecycle.TestLifeCycleActivity
 import com.eric.rxjava.databinding.FragmentFirstBinding
 import com.eric.routers.TgmRouter
 
@@ -43,6 +45,13 @@ class FirstFragment : Fragment() {
 
         binding.jumpBtn.setOnClickListener {
             TgmRouter.getInstance().startActivity("/food/main")
+        }
+
+        binding.lifecycleBtn.setOnClickListener {
+            var intent = Intent(activity,TestLifeCycleActivity::class.java);
+            activity?.let {
+                it.startActivity(intent)
+            }
         }
     }
 

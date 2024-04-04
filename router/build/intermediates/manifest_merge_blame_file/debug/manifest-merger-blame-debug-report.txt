@@ -4,8 +4,8 @@
 4
 5    <uses-sdk
 6        android:minSdkVersion="21"
-6-->/Users/chen/Documents/GitHub/Rxjava2Study/router/src/main/AndroidManifest.xml
+6-->/Users/chen/Documents/GitHub/AndroidStudy/router/src/main/AndroidManifest.xml
 7        android:targetSdkVersion="30" />
-7-->/Users/chen/Documents/GitHub/Rxjava2Study/router/src/main/AndroidManifest.xml
+7-->/Users/chen/Documents/GitHub/AndroidStudy/router/src/main/AndroidManifest.xml
 8
 9</manifest>

@@ -1,11 +1,17 @@
 com/eric/rxjava/databinding/ContentMainBinding.java
  com.eric.rxjava.databinding.ContentMainBinding
+com/eric/lifecycle/LifeCycleActivity.java
+ com.eric.lifecycle.LifeCycleActivity
+com/eric/SinWaveView.java
+ com.eric.SinWaveView
 com/eric/operatprs/Person.java
  com.eric.operatprs.Person
 com/eric/generic/GenericClass.java
  com.eric.generic.GenericClass
 com/eric/rxjava/databinding/ActivitySecondBinding.java
  com.eric.rxjava.databinding.ActivitySecondBinding
+com/eric/lifecycle/TestLifeCycleActivity.java
+ com.eric.lifecycle.TestLifeCycleActivity
 com/eric/routers/apt/SecondActivity.java
  com.eric.routers.apt.SecondActivity
  com.eric.routers.apt.SecondActivity$1
@@ -21,6 +27,8 @@ com/eric/operatprs/bean/Student.java
  com.eric.operatprs.bean.Student
 com/eric/rxjava/databinding/FragmentSecondBinding.java
  com.eric.rxjava.databinding.FragmentSecondBinding
+com/eric/generic/Calculate.java
+ com.eric.generic.Calculate
 com/eric/rxjava/CustomRxjava.java
  com.eric.rxjava.CustomRxjava
  com.eric.rxjava.CustomRxjava$1
@@ -33,6 +41,9 @@ com/eric/rxjava/CustomRxjava.java
  com.eric.rxjava.CustomRxjava$7
  com.eric.rxjava.CustomRxjava$8
  com.eric.rxjava.CustomRxjava$9
+com/eric/lifecycle/ReportFragment.java
+ com.eric.lifecycle.ReportFragment
+ com.eric.lifecycle.ReportFragment$Observer
 com/eric/operatprs/JustOperator.java
  com.eric.operatprs.JustOperator
  com.eric.operatprs.JustOperator$1

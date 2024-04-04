@@ -1908,6 +1908,7 @@ id hideable
 id home
 id homeAsUp
 id honorRequest
+id ic_launcher
 id icon
 id icon_group
 id ifRoom
@@ -1928,6 +1929,7 @@ id largeLabel
 id layout
 id left
 id leftToRight
+id lifecycleBtn
 id line1
 id line3
 id linear
@@ -2058,6 +2060,7 @@ id showCustom
 id showHome
 id showTitle
 id sin
+id sinWaveView
 id skipCollapsed
 id slide
 id smallLabel

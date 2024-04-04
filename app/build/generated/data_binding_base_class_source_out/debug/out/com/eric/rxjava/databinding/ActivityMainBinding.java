@@ -4,12 +4,14 @@ package com.eric.rxjava.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.eric.SinWaveView;
 import com.eric.rxjava.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.lang.NullPointerException;
@@ -24,12 +26,21 @@ public final class ActivityMainBinding implements ViewBinding {
   public final FloatingActionButton fab;
 
   @NonNull
+  public final ImageView icLauncher;
+
+  @NonNull
+  public final SinWaveView sinWaveView;
+
+  @NonNull
   public final Toolbar toolbar;
 
   private ActivityMainBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull FloatingActionButton fab, @NonNull Toolbar toolbar) {
+      @NonNull FloatingActionButton fab, @NonNull ImageView icLauncher,
+      @NonNull SinWaveView sinWaveView, @NonNull Toolbar toolbar) {
     this.rootView = rootView;
     this.fab = fab;
+    this.icLauncher = icLauncher;
+    this.sinWaveView = sinWaveView;
     this.toolbar = toolbar;
   }
 
@@ -66,13 +77,26 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.ic_launcher;
+      ImageView icLauncher = ViewBindings.findChildViewById(rootView, id);
+      if (icLauncher == null) {
+        break missingId;
+      }
+
+      id = R.id.sinWaveView;
+      SinWaveView sinWaveView = ViewBindings.findChildViewById(rootView, id);
+      if (sinWaveView == null) {
+        break missingId;
+      }
+
       id = R.id.toolbar;
       Toolbar toolbar = ViewBindings.findChildViewById(rootView, id);
       if (toolbar == null) {
         break missingId;
       }
 
-      return new ActivityMainBinding((CoordinatorLayout) rootView, fab, toolbar);
+      return new ActivityMainBinding((CoordinatorLayout) rootView, fab, icLauncher, sinWaveView,
+          toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -29,8 +29,9 @@
             </intent-filter>
         </activity>
         <activity android:name="com.eric.routers.apt.SecondActivity" />
-        <activity android:name="com.eric.jetpack.JetpackActivity" >
-        </activity>
+        <activity android:name="com.eric.jetpack.JetpackActivity" />
+        <activity android:name="com.eric.lifecycle.LifeCycleActivity" />
+        <activity android:name="com.eric.lifecycle.TestLifeCycleActivity" />
     </application>
 
 </manifest>
